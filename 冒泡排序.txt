@@ -1,0 +1,58 @@
+编写函数用冒泡排序法对数组中的数据进行从小到大的排序。
+
+
+#include <stdlib.h>
+#include<stdio.h>
+void  wwjt(); 
+
+void sort(int a[],int n)
+{ 
+      int i,j,t;
+ for(i=0;i<n-1;i++)
+   for(j=0;j<n-1-i;j++)
+     if(a[j]>a[j+1])
+       {t=a[j];
+    a[j]=a[j+1];
+    a[j+1]=t;
+    }
+}
+
+main()
+{
+  int a[16],i;
+  for(i=0;i<16;i++)
+    a[i]=random(30)+15;
+  for(i=0;i<16;i++)
+    printf("%3d",a[i]);
+  printf("\n-------------------\n");
+  sort(a,16);
+  for(i=0;i<16;i++)
+    printf("%3d",a[i]);
+  wwjt();
+}
+
+void wwjt()
+{
+  FILE *IN,*OUT;
+  int n;
+  int i[10];
+  IN=fopen("in.dat","r");
+  if(IN==NULL)
+  {
+    printf("Read FILE Error");
+  }
+  OUT=fopen("out.dat","w");
+  if(OUT==NULL)
+  {
+    printf("Write FILE Error");
+  }
+  for(n=0;n<10;n++)
+  {    
+    fscanf(IN,"%d",&i[n]);
+  }
+  sort(i,10);
+  for(n=0;n<10;n++)
+    fprintf(OUT,"%d\n",i[n]);
+  fclose(IN);
+  fclose(OUT);
+}
