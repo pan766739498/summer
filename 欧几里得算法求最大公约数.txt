@@ -1,0 +1,18 @@
+欧几里得求最大公约数：大除小求余，小变大，余变小，直至余为零
+
+#include <stdio.h>
+int main ()
+{
+	int a,b,c;//c为余数
+	printf("Enter the numbers:");
+	scanf("%d%d",&a,&b);
+	c=a%b;
+	while(c!=0)
+	{
+		a=b;
+		b=c;
+		c=a%b; 
+	}
+	printf("%d",b)
+	return 0;
+}
